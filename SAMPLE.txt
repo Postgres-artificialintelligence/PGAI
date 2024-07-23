@@ -1,0 +1,33 @@
+CREATE OR REPLACE FUNCTION add_pseudo_column()
+RETURNS TABLE (
+    id INT,
+    date DATE,
+    name VARCHAR,
+    value DOUBLE PRECISION,
+    description TEXT,
+    pseudo_column DOUBLE PRECISION
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT sample_data.id, sample_data.date, sample_data.name, sample_data.value, sample_data.description, NULL::double precision AS pseudo_column
+    FROM sample_data;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+CREATE TABLE sample_data (
+    id SERIAL PRIMARY KEY,
+    date DATE,
+    name VARCHAR(50),
+    value DOUBLE PRECISION,
+    description TEXT
+);
+SELECT * FROM add_pseudo_column();
+
+INSERT INTO sample_data (date, name, value, description) VALUES
+('2023-01-01', 'Sample 1', 100.0, 'This is a sample description 1'),
+('2023-01-02', 'Sample 2', 150.0, 'This is a sample description 2'),
+('2023-01-03', 'Sample 3', 200.0, 'This is a sample description 3'),
+('2023-01-04', 'Sample 4', 250.0, 'This is a sample description 4'),
+('2023-01-05', 'Sample 5', 300.0, 'This is a sample description 5');

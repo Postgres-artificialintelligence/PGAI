@@ -229,12 +229,13 @@ To use the pgai extension, follow these steps:
 1. **Load the Extension:**
    ```sql
    CREATE EXTENSION pgai;
-   ```
 
-2. **Run Predictive Queries:**
+   ```
+2. **Run ALL Model Before predictions**
+3. **Run Predictive Queries:**
    Use the provided models to perform predictive analytics directly within your PostgreSQL database. Example query:
    ```sql
-   SELECT * FROM EXAMPLE_stock('2025-09-21');
+   SELECT * FROM EXAMPLE_stocks where date='2024-09-01';
    ```
 
 Refer to the `pgai` documentation for detailed examples and usage patterns.

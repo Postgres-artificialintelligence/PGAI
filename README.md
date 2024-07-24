@@ -1,4 +1,4 @@
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/9be15833-1944-4f53-96f1-bace68ba4af3">
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/9be15833-1944-4f53-96f1-bace68ba4af3">
 
 # PostgreSQL Installation Guide
 

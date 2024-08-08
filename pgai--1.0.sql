@@ -204,12 +204,10 @@ RETURNS FLOAT
 AS $$
 import warnings
 import pandas as pd
-import numpy as np
 import pickle
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 import psycopg2
 
-# Suppress specific warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -220,21 +218,19 @@ def get_db_config():
 
 def load_model_from_db(model_name, connection):
     query = """
-    SELECT model_chunk 
+    SELECT model_data 
     FROM google_model_storage 
-    WHERE model_name = %s 
-    ORDER BY chunk_id;
+    WHERE model_name = %s;
     """
     cursor = connection.cursor()
     cursor.execute(query, (model_name,))
-    chunks = cursor.fetchall()
+    model_data = cursor.fetchone()
     cursor.close()
     
-    if not chunks:
+    if not model_data:
         raise ValueError(f"Model with name '{model_name}' not found in database.")
     
-    model_data = b"".join([chunk[0] for chunk in chunks])
-    model = pickle.loads(model_data)
+    model = pickle.loads(model_data[0])
     return model
 
 def get_prediction_for_date(model, historical_data, target_date):
@@ -276,6 +272,7 @@ connection.close()
 
 return float(prediction)
 $$ LANGUAGE plpython3u;
+
 
 
 CREATE OR REPLACE FUNCTION fetch_google_stock(input_date DATE)

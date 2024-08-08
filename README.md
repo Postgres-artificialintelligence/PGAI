@@ -267,8 +267,7 @@ For any questions or feedback, please open an issue on the GitHub repository or 
 
 **LinkedIn Profiles:**
 - [Abdul Moiez Ibrar](https://www.linkedin.com/in/abdul-moiez-ibrar-79167b104/)
-- [Mustafa Khattak](https://www.linkedin.com/in/mustafa-khattak/)
-- [Umer Khurshid](https://www.linkedin.com/in/umer-khurshid-b1a815271/)
+- [Damil Shahzad](https://www.linkedin.com/in/damil-shahzad-465321264/)
 
 ---
 

@@ -231,7 +231,7 @@ To use the pgai extension, follow these steps:
    CREATE EXTENSION pgai;
 
    ```
-2. **Run ALL Model Before predictions**
+2. **Run ALL Models Before Predictions**
 3. **Run Predictive Queries:**
    Use the provided models to perform predictive analytics directly within your PostgreSQL database. Example query:
    ```sql
